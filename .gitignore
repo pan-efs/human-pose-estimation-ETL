@@ -138,7 +138,7 @@ dmypy.json
 .coverage
 
 # docker-compose
-.docker-compose.yml
+docker-compose.yml
 
 # dbms secrets/config
-.dbms/db_config.ini
+dbms/db_config.ini
