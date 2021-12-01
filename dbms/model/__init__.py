@@ -1,0 +1,1 @@
+from .resnet50_fpn import DetectBodyKeypoints
