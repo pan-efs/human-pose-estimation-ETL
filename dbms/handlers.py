@@ -1,4 +1,6 @@
 #!/usr/bin/python
+from dataclasses import dataclass
+
 from database import DataBase
 from tables import Tables
 
@@ -8,6 +10,7 @@ from model.utils.render import Render
 from utils.blob import BlobData
 
 
+@dataclass(frozen=True)
 class Configuration:
     config: str = '/app/dbms/db_config.ini'
     starting_section: str = 'starting_point'

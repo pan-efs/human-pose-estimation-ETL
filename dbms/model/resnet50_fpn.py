@@ -1,5 +1,6 @@
 #!/usr/bin/python
 import json
+from dataclasses import dataclass
 from typing import Dict, List
 from PIL import Image
 
@@ -8,6 +9,7 @@ import torchvision.transforms as T
 from torchvision import models
 
 
+@dataclass(frozen=True)
 class Joints:
 
     joints17 = [
