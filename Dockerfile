@@ -15,7 +15,6 @@ RUN apt-get update && apt-get install -y \
 
 RUN apt-get clean && rm -rf /var/lib/apt/lists/*
 
-
 # Logs are flushed to the terminal directly
 ENV PYTHONBUFFERED 1
 
@@ -45,5 +44,5 @@ COPY ../imgs /app/imgs
 COPY ../tests /app/tests
 COPY ../setup.py /app
 
-# Run setup .py
+# Run pip install
 RUN pip install /app/.

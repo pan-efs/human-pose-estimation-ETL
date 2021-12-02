@@ -1,8 +1,8 @@
 #!/usr/bin/python
-import os, sys
+import os
 import pandas as pd
-from PIL import Image
 
+from PIL import Image
 import streamlit as st
 
 
@@ -12,7 +12,7 @@ st.set_page_config(
     page_icon=":whale2:",
     layout='wide',
     initial_sidebar_state="expanded",
-    menu_items={'Report a bug': 'https://github.com/pan-efs'}
+    menu_items={'Report a bug': 'https://github.com/pan-efs/AutomatedETL_3DHPE'}
 )
 
 # Constants
@@ -27,13 +27,14 @@ st.title("Automated pipeline for 3D human pose estimation!")
 # Sidebar
 sidebar = st.sidebar.selectbox(
     "FAQ",
-    ("What is 'Browsing tool'?", "How it works?", "Upload files", "Delete files"),
+    ("What is 'Browsing tool'?", "How it works?", "Upload files", "Delete files", "Do I lose my data?"),
 )
 
 if sidebar == "What is 'Browsing tool'?": st.sidebar.write("This app is...TODO")
 elif sidebar == 'How it works?': st.sidebar.write("This app works as...TODO")
 elif sidebar == 'Upload files': st.sidebar.write("You can upload only images...TODO")
 elif sidebar == 'Delete files': st.sidebar.write("You can delete files...TODO")
+elif sidebar == "Do I lose my data?": st.sidebar.write("No, you do not lose your data...TODO")
 
 
 # Helper functions
@@ -68,16 +69,14 @@ def delete_images_from_platform(path_to_folder: str, img_type: str):
 
 def count_images_in_system(path_to_folder: str):
     counter = 0
-    for _ in os.listdir(path_to_folder):
-        counter += 1
+    for _ in os.listdir(path_to_folder): counter += 1
     
     return counter
 
 
 def display_images_in_platform(path_to_folder: str):
     images = []
-    for img in os.listdir(path_to_folder):
-        images.append(img)
+    for img in os.listdir(path_to_folder): images.append(img)
     
     df = pd.DataFrame(images, columns=['Images'])
     st.dataframe(df)

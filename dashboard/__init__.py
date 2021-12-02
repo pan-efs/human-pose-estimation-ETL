@@ -1,1 +1,1 @@
-import app
+import web_app
