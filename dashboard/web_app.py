@@ -1,9 +1,12 @@
 #!/usr/bin/python
 import os
 import pandas as pd
+import random
 
 from PIL import Image
 import streamlit as st
+
+from faq import FAQ
 
 
 # Configuration of dashboard
@@ -24,17 +27,25 @@ PATH_TO_RENDERED = '/app/imgs/rendered'
 st.title("Automated pipeline for 3D human pose estimation!")
 
 
-# Sidebar
-sidebar = st.sidebar.selectbox(
-    "FAQ",
-    ("What is 'Browsing tool'?", "How it works?", "Upload files", "Delete files", "Do I lose my data?"),
-)
+# Sidebar 
+# Helper display function
+def display_rendered_image_in_platform(path_to_folder: str):
+    images = []
+    for img in os.listdir(path_to_folder): images.append(img)
+    
+    if images:
+        n = random.randint(0, len(images) - 1)
+        img = Image.open(f'{path_to_folder}/{images[n]}')
+        st.sidebar.image(img, caption=images[n], width=300)
+    else:
+        st.sidebar.warning("There is no available image.")
 
-if sidebar == "What is 'Browsing tool'?": st.sidebar.write("This app is...TODO")
-elif sidebar == 'How it works?': st.sidebar.write("This app works as...TODO")
-elif sidebar == 'Upload files': st.sidebar.write("You can upload only images...TODO")
-elif sidebar == 'Delete files': st.sidebar.write("You can delete files...TODO")
-elif sidebar == "Do I lose my data?": st.sidebar.write("No, you do not lose your data...TODO")
+
+if st.sidebar.button('Display a rendered image'): display_rendered_image_in_platform(PATH_TO_RENDERED)
+
+
+# Main sidebar
+FAQ()
 
 
 # Helper functions
