@@ -110,8 +110,8 @@ class Tables(BasePostgresql):
                 print(f"Insertion of object is done!")
             else:
                 cursor.executemany(command, values)
-                for i in values:
-                    print(f"Insertion of {i} is done!")
+                for _ in values:
+                    print(f"Insertion of object is done!")
             
             cursor.close()
     

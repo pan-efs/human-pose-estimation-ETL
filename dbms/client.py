@@ -25,18 +25,18 @@ class Client(Configuration):
     
             if res != None:
                 print(f"Row count: {res}")
-                return res
     
 
     @staticmethod
-    def processing_client(rootdir: str, savedir: str, start_from: int):
+    def processing_client(rootdir: str, savedir: str):
 
         img_handler = ImageHandler()
         cls_insert_table = InsertTableHandler('',()) #empty
-        id = start_from
         
-        for img in os.listdir(rootdir):
-            img_path, save_path = os.path.join(rootdir, img), os.path.join(savedir, img)
+        _values = []
+
+        for img_name in os.listdir(rootdir):
+            img_path, save_path = os.path.join(rootdir, img_name), os.path.join(savedir, img_name)
              
             original_to_bytea = img_handler.to_bytea(img_path)
 
@@ -46,13 +46,15 @@ class Client(Configuration):
 
             rendered_to_bytea = img_handler.to_bytea(save_path)
             
-            insert_command = f"INSERT INTO {name_of_table} (id, name, original_img, rendered_img, keypoints) values (%s, %s, %s, %s, %s);"
-            insert_values = (id, img, original_to_bytea, rendered_to_bytea, Json(dict_joints_coords))
-            
-            try:
-                cls_insert_table.insert_img_into_table(insert_command, insert_values)
-                id += 1
-            except: continue
+            insert_values = (img_name, original_to_bytea, rendered_to_bytea, Json(dict_joints_coords))
+            _values.append(insert_values)
+
+        insert_command = f"INSERT INTO {name_of_table} (name, original_img, rendered_img, keypoints) values (%s, %s, %s, %s);"
+
+        if len(_values) > 1:  
+            cls_insert_table.insert_img_into_table(insert_command, _values, is_multiple=True)
+        else:
+            cls_insert_table.insert_img_into_table(insert_command, _values[0], is_multiple=False)
 
 
 ###---Run client---###
@@ -68,7 +70,7 @@ savedir = postgresql_details['savedir']
 
 
 database = CreateDatabaseHandler(f"CREATE DATABASE {name_of_db};")
-table = CreateTableHandler(f"CREATE TABLE {name_of_table} (id INT PRIMARY KEY, name CHAR(50) UNIQUE, original_img BYTEA, rendered_img BYTEA, keypoints JSONB);")
+table = CreateTableHandler(f"CREATE TABLE {name_of_table} (name CHAR(50), original_img BYTEA, rendered_img BYTEA, keypoints JSONB);")
 row_count = RowCountTableHandler(f"{name_of_table}")
 
 
@@ -76,7 +78,7 @@ row_count = RowCountTableHandler(f"{name_of_table}")
 database.set_next(table).set_next(row_count)
 
 print("Create database > Create Table > Row count")
-start_from = Client.create_client(database)
+Client.create_client(database)
 
 print(f"Start processing the {name_of_db} database and {name_of_table} table...")
-Client.processing_client(rootdir, savedir, start_from + 1)
+Client.processing_client(rootdir, savedir)
