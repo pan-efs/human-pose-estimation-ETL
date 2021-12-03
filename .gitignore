@@ -137,8 +137,9 @@ dmypy.json
 # coverage
 .coverage
 
-# docker-compose
-docker-compose.yml
+# secrets for docker-compose
+.POSTGRES_USER.txt
+.POSTGRES_PASSWORD.txt
 
 # dbms secrets/config
 dbms/db_config.ini

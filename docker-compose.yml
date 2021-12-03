@@ -1,0 +1,70 @@
+version: "3"
+
+secrets:
+  postgres_user:
+    file: ./POSTGRES_USER.txt
+  
+  postgres_password:
+    file: ./POSTGRES_PASSWORD.txt
+
+services:
+
+  db:
+    image: postgres
+
+    secrets:
+      - postgres_user
+      - postgres_password
+
+    environment:
+      POSTGRES_USER: /run/secrets/postgres_user
+      POSTGRES_DB: template1
+      POSTGRES_PASSWORD: /run/secrets/postgres_password
+    
+    ports:
+     - "5432:5432"
+
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+  
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    
+    container_name: app
+    
+    volumes:
+      - .:/app
+    
+    command: python /app/dbms/client.py
+
+    depends_on:
+      - db
+  
+  streamlit:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    
+    container_name: streamlit_app
+
+    volumes:
+      - .:/app
+    
+    ports:
+      - 8501:8501
+    
+    command: streamlit run /app/dashboard/web_app.py
+
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8501"]
+      interval: 20s
+
+    depends_on:
+      - db
+      - app
+
+      
+volumes:
+  pgdata:  
