@@ -69,7 +69,12 @@ class InsertTableHandler(Configuration, AbstractBaseHandler):
             return super().handle(req)
     
 
-    def insert_img_into_table(self, command: str, values: tuple, is_multiple: bool):
+    def insert_img_into_table(
+        self,
+        command: str, 
+        values: tuple, 
+        is_multiple: bool
+    ):
         self.dbms.insert_into_table(command, values, multiple=is_multiple, has_dict=True) 
 
 
