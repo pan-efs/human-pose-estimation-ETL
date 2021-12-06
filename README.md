@@ -12,16 +12,28 @@ Install `Docker` on your system, following the [instructions.](https://docs.dock
 For formal reasons, the application has been developed in `WSL2 Ubuntu 20.04` and `conda` as package and environment management.
 
 ### Step 1: Configuration
-Run the bash script `config.sh` parsing the following flags:
+Run the script `config.sh` parsing the following flags:
 
 ```diff
 - -u, Define the username for the PostgreSQL DBMS.
-- -p, Defind the password for the PostgreSQL DBMS.
+- -p, Define the password for the PostgreSQL DBMS.
 - -d, Give a name for the database that would you like to store the data.
 - -t, Give a name for the table into the database which has been created using the above flag. 
 ```
 
 Example, `root$ bash config.sh -u myusername -p mypassword -d mydatabase -t mytable`, where `root` is the path to the repo in your local filesystem.
 
-### Step 2: Build docker locally
+After configuration three new files (db_config.ini, POSTGRES_USER.txt & POSTGRES_PASSWORD.txt) will appear in your filesystem. It's recommended to keep secret those files due to sensitive information. 
+
+### Step 2: Docker-compose Build/Up Locally
+Run the script `buildup.sh` parsing the following arguments:
+
+```diff
++ -b, yes/YES, if you want to build the image, otherwise no/NO.
++ -u, yes/YES, if you want to start running the docker on the background after building, otherwise no/NO.
+```
+
+See, more info about useful docker-compose commands [here.](https://github.com/pan-efs/AutomatedETL_3DHPE/tree/master/info)
+
+### How it works?
 #TODO:...
