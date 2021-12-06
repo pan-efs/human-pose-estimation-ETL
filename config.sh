@@ -13,7 +13,7 @@ done
 
 # Create the config file if does not exist
 # otherwise, delete the file and re-create it using user's permission
-file=dbms/dbnn_config.ini
+file=dbms/db_config.ini
 
 if [ ! -e "$file" ]
 then
@@ -45,7 +45,7 @@ savedir=/app/imgs/rendered
 EOT
 
 # Create secret files for user and password
-# otherwise, delete them and re-create them using user's permission
+# otherwise, clear them and re-write them
 postgres_user=POSTGRES_USER.txt
 postgres_password=POSTGRES_PASSWORD.txt
 
@@ -55,8 +55,8 @@ then
    echo $user >> "$postgres_user"
    echo $password >> "$postgres_password"
 else
-   rm -i -v "$postgres_user" "$postgres_password"
-   touch "$postgres_user" "$postgres_password"
+   > $postgres_user
    echo $user >> "$postgres_user"
+   > $postgres_password
    echo $password >> "$postgres_password"
 fi
