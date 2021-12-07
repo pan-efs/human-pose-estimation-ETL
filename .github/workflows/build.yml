@@ -32,4 +32,5 @@ jobs:
 
     - name: Build docker-compose
       run: |
-        bash scripts/docker/build.sh
+        docker-compose build \
+        --no-cache

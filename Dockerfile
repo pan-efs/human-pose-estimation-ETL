@@ -6,6 +6,9 @@ FROM python:3.8-buster
 # Maintainer
 LABEL Author="https://github.com/pan-efs"
 
+# Set noninteractive
+ARG DEBIAN_FRONTEND=noninteractive
+
 # Install necessary ubuntu packages
 RUN apt-get update && apt-get install -y \
     build-essential \
