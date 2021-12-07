@@ -22,7 +22,7 @@ Run the script `config.sh` parsing the following flags:
 - -t, Give a name for the table into the database which has been created using the above flag. 
 ```
 
-Example, `root$ bash config.sh -u myusername -p mypassword -d mydatabase -t mytable`, where `root` is the path to the repo in your local filesystem.
+For example, `root$ bash config.sh -u myusername -p mypassword -d mydatabase -t mytable`, where `root` is the path to the repo in your local filesystem.
 
 After configuration three new files (db_config.ini, POSTGRES_USER.txt & POSTGRES_PASSWORD.txt) will appear in your filesystem. It's recommended to keep secret those files due to sensitive information. 
 
@@ -30,11 +30,13 @@ After configuration three new files (db_config.ini, POSTGRES_USER.txt & POSTGRES
 Run the script `buildup.sh` parsing the following arguments:
 
 ```diff
-+ -b, yes/YES, if you want to build the image, otherwise no/NO.
-+ -u, yes/YES, if you want to start running the docker on the background after building, otherwise no/NO.
++ -b, yes/YES, if you want to build the images, otherwise no/NO.
++ -u, yes/YES, if you want to start running the docker containers in the background after building, otherwise no/NO.
 ```
 
-See, more info about useful docker-compose commands [here.](https://github.com/pan-efs/AutomatedETL_3DHPE/tree/master/info)
+For instance, the command `root$ bash buildup.sh -b yes -u yes` will build the docker images and then will start running the containers in the background and leaves them running.
+
+See a synopsis of useful docker-compose commands [here.](https://github.com/pan-efs/AutomatedETL_3DHPE/tree/master/info)
 
 ### How it works?
 #TODO:...
