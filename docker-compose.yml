@@ -31,6 +31,8 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
+      args:
+        requirements: requirements-app.txt
     
     container_name: app
     
@@ -46,6 +48,8 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
+      args:
+        requirements: requirements-streamlit-app.txt
     
     container_name: streamlit_app
 

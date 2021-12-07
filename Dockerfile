@@ -6,6 +6,9 @@ FROM python:3.8-buster
 # Maintainer
 LABEL Author="https://github.com/pan-efs"
 
+# Provide which requirements.txt should use
+ARG requirements
+
 # Install necessary ubuntu packages
 RUN apt-get update && apt-get install -y \
     build-essential \
@@ -32,10 +35,10 @@ RUN mkdir /app
 WORKDIR /app
 
 # Copy dependencies
-COPY requirements.txt /app
+COPY requirements /app/requirements
 
 # Install dependencies
-RUN pip install --no-cache-dir -r /app/requirements.txt
+RUN pip install --no-cache-dir -r /app/requirements/$requirements
 
 # Copy desired folders
 COPY dashboard /app/dashboard
