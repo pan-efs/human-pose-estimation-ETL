@@ -6,9 +6,6 @@ FROM python:3.8-buster
 # Maintainer
 LABEL Author="https://github.com/pan-efs"
 
-# Set noninteractive
-ARG DEBIAN_FRONTEND=noninteractive
-
 # Install necessary ubuntu packages
 RUN apt-get update && apt-get install -y \
     build-essential \
@@ -35,17 +32,17 @@ RUN mkdir /app
 WORKDIR /app
 
 # Copy dependencies
-COPY ../requirements.txt /app
+COPY requirements.txt /app
 
 # Install dependencies
 RUN pip install --no-cache-dir -r /app/requirements.txt
 
 # Copy desired folders
-COPY ../dashboard /app/dashboard
-COPY ../dbms /app/dbms
-COPY ../imgs /app/imgs
-COPY ../tests /app/tests
-COPY ../setup.py /app
+COPY dashboard /app/dashboard
+COPY dbms /app/dbms
+COPY imgs /app/imgs
+COPY tests /app/tests
+COPY setup.py /app
 
 # Run pip install
 RUN pip install /app/.
