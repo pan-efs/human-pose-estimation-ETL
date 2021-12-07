@@ -43,6 +43,3 @@ COPY dbms /app/dbms
 COPY imgs /app/imgs
 COPY tests /app/tests
 COPY setup.py /app
-
-# Run pip install
-RUN pip install /app/.
