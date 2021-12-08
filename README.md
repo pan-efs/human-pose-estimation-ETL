@@ -55,7 +55,7 @@ See a synopsis of useful docker-compose commands [here.](https://github.com/pan-
   1. Be sure that docker is running!
   2. If you need to interact with your database write the below command:
      * `docker-compose exec db bash`
-     * psql -h `db` -U <myusername> -d <mydatabase>  
+     * psql -h `db` -U `myusername` -d `mydatabase` 
 </details>
 
 <details>
