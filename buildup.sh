@@ -30,5 +30,5 @@ elif [ "$up" = no ] || [ "$up" = NO ]
 then
    echo "Docker-compose is not up."
 else
-   echo "Warning '${up}': Acceptable inputs are only yes/no."
+   echo "Warning '${up}': Acceptable inputs are only yes/YES/no/NO."
 fi
