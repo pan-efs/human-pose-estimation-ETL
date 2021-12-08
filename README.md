@@ -4,7 +4,7 @@
 [![Python 3.8](https://img.shields.io/badge/python-3.8-blue.svg)](https://www.python.org/downloads/release/python-380/)
 [![Github All Releases](https://img.shields.io/github/downloads/pan-efs/AutomatedETL_3DHPE/total.svg)]()
 
-> "An automated pipeline tool which works like that --> [E]xtract images locally, [T]ranform them applying a 3D human pose estimation model and [L]oad them (+ more details) into PostgreSQL database." <img src="info/logo.png" height=210 width=256>
+> <img src="info/logo.png" height=150 width=512> "An automated pipeline tool which works like that --> [E]xtract images locally, [T]ranform them applying a 3D human pose estimation model and [L]oad them (+ more details) into PostgreSQL database."
 
 ### Quickstart
 Download or clone this [repo.](https://github.com/pan-efs/AutomatedETL_3DHPE)
