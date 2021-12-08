@@ -40,4 +40,26 @@ For instance, the command `root$ bash buildup.sh -b yes -u yes` will build the d
 See a synopsis of useful docker-compose commands [here.](https://github.com/pan-efs/AutomatedETL_3DHPE/tree/master/info)
 
 ### How it works? <img src="info/logo.png">
-#TODO:...
+<details>
+  <summary>Streamlit Dashboard</summary>
+  
+  1. Be sure that docker is running!
+  2. Open a web browser (i.e. Google Chrome)
+     * search for `http://localhost:8501/`
+  3. See `FAQ` section in order to find out how the dashboard works.  
+</details>
+
+<details>
+  <summary>PostgreSQL DB</summary>
+  
+  1. Be sure that docker is running!
+  2. If you need to interact with your database write the below command:
+     * `docker-compose exec db bash`   
+</details>
+
+<details>
+  <summary>3D Human Pose Estimation model</summary>
+  
+  1. More info about the model you can read [here.](https://pytorch.org/vision/master/_modules/torchvision/models/detection/keypoint_rcnn.html)
+  2. The `keypointrcnn_resnet50_fpn` is particularly trained to identify key-points in a person.    
+</details>
