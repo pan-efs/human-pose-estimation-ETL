@@ -43,7 +43,6 @@ def display_rendered_image_in_platform(path_to_folder: str):
 
 if st.sidebar.button('Display a rendered image'): display_rendered_image_in_platform(PATH_TO_RENDERED)
 
-
 # Main sidebar
 FAQ()
 
@@ -115,11 +114,20 @@ with col2:
     st.write("Here you can see what already exist in the platform...")
 
     display_images_in_platform(PATH_TO_ORIGINALS)
+    count_preprocessed_imgs = count_images_in_system(PATH_TO_ORIGINALS)
+    count_processed_imgs = count_images_in_system(PATH_TO_RENDERED)
 
-    count_imgs = count_images_in_system(PATH_TO_ORIGINALS)
 
-    if st.button('Delete files') and count_imgs>0:
+    if st.button('Delete files') and count_preprocessed_imgs>0:
         delete_images_from_platform(PATH_TO_ORIGINALS, 'originals')
         delete_images_from_platform(PATH_TO_RENDERED, 'rendered')
     
-    st.info(f"Number of images: {count_imgs}")
+    if st.button('Should I delete?'):
+        st.info(f"Preprocessed images: {count_preprocessed_imgs} | Processed images: {count_processed_imgs}")
+
+        if count_preprocessed_imgs == count_processed_imgs and count_processed_imgs == 0 and count_preprocessed_imgs == 0:
+            st.success("Yes! But, table is empty!:)")
+        elif count_preprocessed_imgs == count_processed_imgs:
+            st.success("Yes!")
+        else:
+            st.warning(f"{count_preprocessed_imgs - count_processed_imgs} left! There is a risk to lose the remained images if you delete them now!")
