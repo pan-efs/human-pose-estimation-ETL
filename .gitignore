@@ -118,3 +118,6 @@ dmypy.json
 
 # dbms secrets/config
 dbms/db_config.ini
+
+# create logo fn
+info/logo.py
