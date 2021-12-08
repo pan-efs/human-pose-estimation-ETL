@@ -1,21 +1,19 @@
-## Automated ETL Tool
+## Automated ETL Tool <img src="info/logo.png">
 
 [![AUR maintainer](https://img.shields.io/badge/Houba-Hej%2C%20Folks!-brightgreen)]()
 [![Python 3.8](https://img.shields.io/badge/python-3.8-blue.svg)](https://www.python.org/downloads/release/python-380/)
-[![Github All Releases](https://img.shields.io/github/downloads/pan-efs/AutomatedETL_3DHPE/total.svg)]()
-
-<img src="info/logo.png"> <img src="info/logo.png"> <img src="info/logo.png"> <img src="info/logo.png"> <img src="info/logo.png"> <img src="info/logo.png"> <img src="info/logo.png"> <img src="info/logo.png"> <img src="info/logo.png"> <img src="info/logo.png"> <img src="info/logo.png"> <img src="info/logo.png">
+[![Github All Releases](https://img.shields.io/github/downloads/pan-efs/AutomatedETL_3DHPE/total.svg)]() 
 
 > "An automated pipeline tool which works like that --> [E]xtract images locally, [T]ranform them applying a 3D human pose estimation model and [L]oad them (+ more details) into PostgreSQL database."
 
-### Quickstart
+### Quickstart <img src="info/logo.png">
 Download or clone this [repo.](https://github.com/pan-efs/AutomatedETL_3DHPE)
 
 Install `Docker` on your system, following the [instructions.](https://docs.docker.com/get-docker/)
 
 For formal reasons, the application has been developed in `WSL2 Ubuntu 20.04` and `conda` as package and environment management.
 
-### Step 1: Configuration
+### Step 1: Configuration <img src="info/logo.png">
 Run the script `config.sh` parsing the following flags:
 
 ```diff
@@ -29,7 +27,7 @@ For example, `root$ bash config.sh -u myusername -p mypassword -d mydatabase -t 
 
 After configuration three new files (db_config.ini, POSTGRES_USER.txt & POSTGRES_PASSWORD.txt) will appear in your filesystem. It's recommended to keep secret those files due to sensitive information. 
 
-### Step 2: Docker-compose Build/Up Locally
+### Step 2: Docker-compose Build/Up Locally <img src="info/logo.png">
 Run the script `buildup.sh` parsing the following arguments:
 
 ```diff
@@ -41,5 +39,5 @@ For instance, the command `root$ bash buildup.sh -b yes -u yes` will build the d
 
 See a synopsis of useful docker-compose commands [here.](https://github.com/pan-efs/AutomatedETL_3DHPE/tree/master/info)
 
-### How it works?
+### How it works? <img src="info/logo.png">
 #TODO:...
