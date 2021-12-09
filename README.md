@@ -30,16 +30,35 @@ After configuration three new files (db_config.ini, POSTGRES_USER.txt & POSTGRES
 ### Step 2: Docker-compose Build/Up Locally <img src="info/logo.png">
 Run the script `buildup.sh` parsing the following arguments:
 
-```diff
-+ -b, yes/YES, if you want to build the images, otherwise no/NO.
-+ -u, yes/YES, if you want to start running the docker containers in the background after building, otherwise no/NO.
-```
+| Flag         | Values           |
+| :---         |     :---:        |
+| -b           | yes/YES || no/No |
+| -u           | yes/YES || no/No |
+
+<details>
+  <summary>Explanation</summary>
+
+  ```diff
+  + -b, yes/YES, if you want to build the images, otherwise no/NO.
+  + -u, yes/YES, if you want to start running the docker containers in the background after building, otherwise no/NO.
+  ```
+</details>
 
 For instance, the command `root$ bash buildup.sh -b yes -u yes` will build the docker images and then will start running the containers in the background and leaves them running.
 
 See a synopsis of useful docker-compose commands [here.](https://github.com/pan-efs/AutomatedETL_3DHPE/tree/master/info)
 
 ### How it works? <img src="info/logo.png">
+<details>
+  <summary>Post-building phase</summary>
+
+  1. Start running the docker using `docker-compose up` || `docker-compose up -d`.
+  2. `app` service will download and initiliaze the model. This step needs 2-3 minutes.
+  3. Then, it will process all images, if exist. Otherwise, it will exit.
+  4. When you upload new images, you have to run the service again using the command on step 1.
+  5. Running in the background is more convenient.   
+</details>
+
 <details>
   <summary>Streamlit Dashboard</summary>
   
@@ -62,5 +81,6 @@ See a synopsis of useful docker-compose commands [here.](https://github.com/pan-
   <summary>3D Human Pose Estimation model</summary>
   
   1. More info about the model you can read [here.](https://pytorch.org/vision/master/_modules/torchvision/models/detection/keypoint_rcnn.html)
-  2. The `keypointrcnn_resnet50_fpn` is particularly trained to identify key-points in a person.    
+  2. The `keypointrcnn_resnet50_fpn` is particularly trained to identify key-points in `a person`.
+  3. The model infers better if there are no occlusions.   
 </details>
