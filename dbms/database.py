@@ -39,6 +39,15 @@ class DataBase(BasePostgresql):
     def create_database(self, 
             command: str,  
         ):
+        """
+        A method which creates a database.
+
+        Args:
+            command (str): SQL command.
+
+        Raises:
+            SyntaxError: A simple and quick check if CREATE DATABASE exists in the command.
+        """
         try:
             if "CREATE DATABASE" not in command.upper():
                 raise SyntaxError("No CREATE DATABASE command found!")
@@ -61,6 +70,15 @@ class DataBase(BasePostgresql):
     def drop_database(self, 
             command: str,  
         ):
+        """
+        A method which drops a database.
+
+        Args:
+            command (str): SQL command.
+
+        Raises:
+            SyntaxError: A simple and quick check if DROP DATABASE exists in the command.
+        """
         try:
             if "DROP DATABASE" not in command.upper():
                 raise SyntaxError("No DROP DATABASE command found!")

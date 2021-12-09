@@ -29,6 +29,13 @@ class Client(Configuration):
 
     @staticmethod
     def processing_client(rootdir: str, savedir: str):
+        """
+        A method which processes all images from the source and saves them in a new directory.
+
+        Args:
+            rootdir (str): Source's directory.
+            savedir (str): Save's directory.
+        """
 
         img_handler = ImageHandler()
         cls_insert_table = InsertTableHandler('',()) #empty

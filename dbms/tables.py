@@ -40,6 +40,16 @@ class Tables(BasePostgresql):
             command: str, 
             commit=True
         ):
+        """
+        A method which creates a table in a database.
+
+        Args:
+            command (str): SQL command.
+            commit (bool, optional): Commit the current transaction. Defaults to True.
+
+        Raises:
+            SyntaxError: A simple and quick check if CREATE TABLE exists in the command.
+        """
         try:
             if "CREATE TABLE" not in command.upper():
                 raise SyntaxError("No CREATE TABLE command found!")
@@ -66,6 +76,16 @@ class Tables(BasePostgresql):
             command:str,
             commit=True
         ):
+        """
+        A method which drops a table in a database.
+
+        Args:
+            command (str): SQL command.
+            commit (bool, optional): Commit the current transaction. Defaults to True.
+
+        Raises:
+            SyntaxError: A simple and quick check if DROP TABLE exists in the command.
+        """
         try:
             if "DROP TABLE" not in command.upper():
                 raise SyntaxError("No DROP TABLE command found!")
@@ -95,6 +115,19 @@ class Tables(BasePostgresql):
             multiple=False, 
             commit=True
         ):
+        """
+        A method which inserts new data in a table in a database.
+
+        Args:
+            command (str): SQL command.
+            values (tuple): The values for each variable in the command.
+            has_dict (bool, optional): True, if values contain dictionary. Defaults to False.
+            multiple (bool, optional): True, if execution of many rows. Defaults to False.
+            commit (bool, optional): Commit the current transaction. Defaults to True.
+
+        Raises:
+            SyntaxError: A simple and quick check if INSERT INTO exists in the command.
+        """
         try:
             if "INSERT INTO" not in command.upper():
                 raise SyntaxError("No INSERT INTO command found!")
@@ -128,6 +161,16 @@ class Tables(BasePostgresql):
             name: str, 
             commit=True
         ) -> int:
+        """
+        A method which counts the rows of a table in a database.
+        
+        Args:
+            name (str): Table's name.
+            commit (bool, optional): Commit the current transaction. Defaults to True.
+
+        Returns:
+            int: The number of rows.
+        """
         try:
             self.conn = self.connect()
     
@@ -156,6 +199,17 @@ class Tables(BasePostgresql):
             values: tuple, 
             commit= True
         ):
+        """
+        A method which updates a table in a database. 
+
+        Args:
+            command (str): SQL command.
+            values (tuple): Values for each variable in the command.
+            commit (bool, optional): Commit the current transaction. Defaults to True.
+
+        Raises:
+            SyntaxError: A simple and quick check if UPDATE exists in the command.
+        """
         try:
             if "UPDATE" not in command.upper():
                 raise SyntaxError("No UPDATE command found!")
@@ -182,6 +236,19 @@ class Tables(BasePostgresql):
             command: str, 
             fetch="fetchall", 
         ):
+        """
+        A method which queries data from a table in a database.
+
+        Args:
+            command (str): SQL command.
+            fetch (str, optional): Retrieves rows. Defaults to "fetchall".
+
+        Raises:
+            SyntaxError: A simple and quick check if SELECT exists in the command.
+
+        Returns:
+            The retrieved rows.
+        """
         try:
             if "SELECT" not in command.upper():
                 raise SyntaxError("No SELECT command found!")
@@ -210,6 +277,17 @@ class Tables(BasePostgresql):
             values: tuple, 
             commit=True
         ):
+        """
+        A method which deletes data from a table in a database.
+
+        Args:
+            command (str): SQL command.
+            values (tuple): Values for each variable in the command.
+            commit (bool, optional): Commit the current transaction. Defaults to True.
+
+        Raises:
+            SyntaxError: A simple and quick check if DELETE exists in the command.
+        """
         try:
             if "DELETE" not in command.upper():
                 raise SyntaxError("No DELETE command found!")

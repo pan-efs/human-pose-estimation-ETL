@@ -3,7 +3,15 @@ from abc import ABC, abstractmethod
 from typing import Any, Optional
 
 
+"""
+Chain of Responsibility as Design Pattern.
+"""
+
 class BaseHandler(ABC):
+    """
+    A Handler interface which declares a method for building the chain of handlers
+    and a method for executing a request.
+    """
 
     @abstractmethod
     def set_next(self, handler: 'BaseHandler') -> 'BaseHandler':
@@ -16,6 +24,9 @@ class BaseHandler(ABC):
 
 
 class AbstractBaseHandler(BaseHandler):
+    """
+    The default chaining behavior.
+    """
 
     _next: BaseHandler = None
 

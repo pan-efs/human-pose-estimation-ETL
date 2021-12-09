@@ -2,6 +2,9 @@ from configparser import ConfigParser
 from typing import Dict
 
 class Config:
+    """
+    A parser class of configuration file.
+    """
 
     def __init__(self, filename: str, section: str):
         self.filename = filename

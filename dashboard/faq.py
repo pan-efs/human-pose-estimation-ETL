@@ -2,6 +2,9 @@
 import streamlit as st
 
 def FAQ():
+    """
+    A function which includes frequently asked questions.
+    """
     sidebar = st.sidebar.selectbox(
         "FAQ",
         ("What is 'Browsing tool'?", 

@@ -11,6 +11,9 @@ from torchvision import models
 
 @dataclass(frozen=True)
 class Joints:
+    """
+    A class which includes a list of supported body keypoints.
+    """
 
     joints17 = [
         "nose",

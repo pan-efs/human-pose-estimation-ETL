@@ -62,6 +62,8 @@ See a synopsis of useful docker-compose commands [here.](https://github.com/pan-
 ### How it works? <img src="info/logo.png">
 <details>
   <summary>A short preview</summary>
+   
+   - For a better resolution, click on the image!
 
   <img src="info/dashboard.png" alt="dashboard" height="640" width="640">
   <img src="info/rendered.png" alt="rendered image" height="640" width="640">
