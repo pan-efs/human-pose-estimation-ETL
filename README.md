@@ -63,9 +63,9 @@ See a synopsis of useful docker-compose commands [here.](https://github.com/pan-
 <details>
   <summary>A short preview</summary>
 
-  <img src="info/dashboard.png" alt="dashboard" height="512" width="512">
-  <img src="info/rendered.png" alt="rendered image" height="512" width="512">
-  <img src="info/postgres.png" alt="interaction with database" height="512" width="512">
+  <img src="info/dashboard.png" height="512" width="512">
+  <img src="info/rendered.png" height="512" width="512">
+  <img src="info/postgres.png" height="512" width="512">
 </details>
 <details>
   <summary>Post-building phase</summary>
