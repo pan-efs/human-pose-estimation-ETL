@@ -16,24 +16,35 @@ For formal reasons, the application has been developed in `WSL2 Ubuntu 20.04` an
 ### Step 1: Configuration <img src="info/logo.png">
 Run the script `config.sh` parsing the following flags:
 
-```diff
-- -u, Define the username for the PostgreSQL DBMS.
-- -p, Define the password for the PostgreSQL DBMS.
-- -d, Give a name for the database that would you like to store the data.
-- -t, Give a name for the table into the database which has been created using the above flag. 
-```
+| Flag         | Values           |
+| :---         |     :---:        |
+| -u           | username         |
+| -p           | password         |
+| -d           | database's name  |
+| -t           | table's name     |
+
+<details>
+  <summary>Explanation</summary>
+
+  ```diff
+  - -u, Define the username for the PostgreSQL DBMS.
+  - -p, Define the password for the PostgreSQL DBMS.
+  - -d, Give a name for the database that would you like to store the data.
+  - -t, Give a name for the table into the database which has been created using the above flag. 
+  ```
 
 For example, `root$ bash config.sh -u myusername -p mypassword -d mydatabase -t mytable`, where `root` is the path to the repo in your local filesystem.
+</details>
 
-After configuration three new files (db_config.ini, POSTGRES_USER.txt & POSTGRES_PASSWORD.txt) will appear in your filesystem. It's recommended to keep secret those files due to sensitive information. 
+After configuration three new files `(db_config.ini, POSTGRES_USER.txt & POSTGRES_PASSWORD.txt)` will appear in your filesystem. It's recommended to keep secret those files due to sensitive information. 
 
-### Step 2: Docker-compose Build/Up Locally <img src="info/logo.png">
-Run the script `buildup.sh` parsing the following arguments:
+### Step 2: Docker-compose Build/Up Locally <img src="info/logo.png"/>
+Run the script `buildup.sh` parsing the following flags:
 
 | Flag         | Values           |
 | :---         |     :---:        |
-| -b           | yes/YES || no/No |
-| -u           | yes/YES || no/No |
+| -b           | yes/YES, no/No   |
+| -u           | yes/YES, no/No   |
 
 <details>
   <summary>Explanation</summary>
@@ -42,13 +53,20 @@ Run the script `buildup.sh` parsing the following arguments:
   + -b, yes/YES, if you want to build the images, otherwise no/NO.
   + -u, yes/YES, if you want to start running the docker containers in the background after building, otherwise no/NO.
   ```
-</details>
 
-For instance, the command `root$ bash buildup.sh -b yes -u yes` will build the docker images and then will start running the containers in the background and leaves them running.
+  For instance, the command `root$ bash buildup.sh -b yes -u yes` will build the docker images and then will start running the containers in the background and leaves them running.
+</details>
 
 See a synopsis of useful docker-compose commands [here.](https://github.com/pan-efs/AutomatedETL_3DHPE/tree/master/info)
 
 ### How it works? <img src="info/logo.png">
+<details>
+  <summary>A short preview</summary>
+
+  <img src="info/dashboard.png" alt="dashboard" height="512" width="512">
+  <img src="info/rendered.png" alt="rendered image" height="512" width="512">
+  <img src="info/postgres.png" alt="interaction with database" height="512" width="512">
+</details>
 <details>
   <summary>Post-building phase</summary>
 
@@ -74,7 +92,8 @@ See a synopsis of useful docker-compose commands [here.](https://github.com/pan-
   1. Be sure that docker is running!
   2. If you need to interact with your database write the below command:
      * `docker-compose exec db bash`
-     * psql -h `db` -U `myusername` -d `mydatabase` 
+     * psql -h `db` -U `myusername` -d `mydatabase`
+  3. The table contains four columns (name CHAR(50), original_img BYTEA, rendered_img BYTEA, keypoints JSONB).
 </details>
 
 <details>

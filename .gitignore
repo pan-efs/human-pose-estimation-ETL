@@ -121,3 +121,8 @@ dbms/db_config.ini
 
 # create logo fn
 info/logo.py
+
+# ignore imgs
+info/dashboard.png
+info/postgres.png
+info/rendered.png
