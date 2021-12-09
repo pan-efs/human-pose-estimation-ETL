@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/env python3
 import json
 from dataclasses import dataclass
 from typing import Dict, List
