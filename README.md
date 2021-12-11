@@ -100,7 +100,7 @@ See a synopsis of useful docker-compose commands [here.](https://github.com/pan-
 </details>
 
 <details>
-  <summary>3D Human Pose Estimation model</summary>
+  <summary>Human Pose Estimation model</summary>
   
   1. More info about the model you can read from [pytorch.org](https://pytorch.org/vision/master/_modules/torchvision/models/detection/keypoint_rcnn.html) or a nice article from [learnopencv.com.](https://learnopencv.com/human-pose-estimation-using-keypoint-rcnn-in-pytorch/)
   2. The `keypointrcnn_resnet50_fpn` is particularly trained to identify key-points in `a person`.
