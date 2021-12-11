@@ -2,13 +2,13 @@
 
 [![AUR maintainer](https://img.shields.io/badge/Houba-Hej%2C%20Folks!-brightgreen)]()
 [![Python 3.8](https://img.shields.io/badge/python-3.8-blue.svg)](https://www.python.org/downloads/release/python-380/)
-![GitHub repo size](https://img.shields.io/github/repo-size/pan-efs/automated-etl-3dhpe)
-![GitHub Workflow Status](https://img.shields.io/github/workflow/status/pan-efs/automated-etl-3dhpe/build)
+![GitHub repo size](https://img.shields.io/github/repo-size/pan-efs/automated-etl-hpe)
+![GitHub Workflow Status](https://img.shields.io/github/workflow/status/pan-efs/automated-etl-hpe/build)
 
-> "An automated pipeline tool which works like that --> [E]xtract images locally, [T]ransform them and apply a 3D human pose estimation model on them and [L]oad them (+ more details) into PostgreSQL database system."
+> "An automated pipeline tool which works like that --> [E]xtract images locally, [T]ransform them and apply a human pose estimation model on them and [L]oad them (+ more details) into PostgreSQL database system."
 
 ### Quickstart <img src="info/logo.png">
-Download or clone this [repo.](https://github.com/pan-efs/AutomatedETL_3DHPE)
+Download or clone this [repo.](https://github.com/pan-efs/automated-etl-hpe)
 
 Install `Docker` on your system, following the [instructions.](https://docs.docker.com/get-docker/)
 
@@ -58,7 +58,7 @@ Run the script `buildup.sh` parsing the following flags:
   For instance, the command `root$ bash buildup.sh -b yes -u yes` will build the docker images and then will start running the containers in the background and leaves them running.
 </details>
 
-See a synopsis of useful docker-compose commands [here.](https://github.com/pan-efs/AutomatedETL_3DHPE/tree/master/info)
+See a synopsis of useful docker-compose commands [here.](https://github.com/pan-efs/automated-etl-hpe/tree/master/info)
 
 ### How it works? <img src="info/logo.png">
 <details>
@@ -102,7 +102,7 @@ See a synopsis of useful docker-compose commands [here.](https://github.com/pan-
 <details>
   <summary>3D Human Pose Estimation model</summary>
   
-  1. More info about the model you can read [here.](https://pytorch.org/vision/master/_modules/torchvision/models/detection/keypoint_rcnn.html)
+  1. More info about the model you can read from [pytorch.org](https://pytorch.org/vision/master/_modules/torchvision/models/detection/keypoint_rcnn.html) or a nice article from [learnopencv.com.](https://learnopencv.com/human-pose-estimation-using-keypoint-rcnn-in-pytorch/)
   2. The `keypointrcnn_resnet50_fpn` is particularly trained to identify key-points in `a person`.
   3. The model infers better if there are no occlusions.   
 </details>
