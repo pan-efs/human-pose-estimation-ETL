@@ -15,7 +15,7 @@ st.set_page_config(
     page_icon=":whale2:",
     layout='wide',
     initial_sidebar_state="expanded",
-    menu_items={'Report a bug': 'https://github.com/pan-efs/AutomatedETL_3DHPE'}
+    menu_items={'Report a bug': 'https://github.com/pan-efs/automated-etl-hpe'}
 )
 
 # Constants
@@ -24,7 +24,7 @@ PATH_TO_RENDERED = '/app/imgs/rendered'
 
 
 # Title
-st.title("Automated pipeline for 3D human pose estimation!")
+st.title("Automated pipeline for human pose estimation!")
 
 
 # Sidebar 
