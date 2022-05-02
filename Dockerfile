@@ -9,7 +9,7 @@ LABEL Author="https://github.com/pan-efs"
 # Provide which requirements.txt should use
 ARG requirements
 
-# Install necessary ubuntu packages
+# Install necessary packages
 RUN apt-get update && apt-get install -y \
     build-essential \
     libpq-dev \
